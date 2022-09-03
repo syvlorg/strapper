@@ -1,0 +1,42 @@
+#+property: header-args:py+ :shebang "#!/usr/bin/env python3"
+#+property: header-args:py+ :tangle yes
+
+* Rich Traceback
+
+#+begin_src py
+import rich.traceback as RichTraceback
+RichTraceback.install(show_locals = True)
+#+end_src
+
+* Imports
+
+#+begin_src py
+import hy
+#+end_src
+
+** From
+
+#+begin_src py
+from addict import Dict
+#+end_src
+
+** Everything From Strapper
+
+Adapted from [[https://github.com/hylang/hyrule/blob/master/hyrule/__init__.py][here]],
+with help from [[https://stackoverflow.com/users/1451346/kodiologist][Kodiologist's]] comment
+[[https://stackoverflow.com/questions/73030667/init-py-for-hy-modules-with-relative-imports#comment128994796_73030667][here]]:
+
+#+begin_src py
+hy.macros.require('strapper.strapper',
+    # The Python equivalent of `(require strapper.strapper *)`
+    None, assignments = 'ALL', prefix = '')
+hy.macros.require_reader('strapper.strapper', None, assignments = 'ALL')
+from strapper.strapper import *
+#+end_src
+
+** Click Application
+
+#+begin_src py
+if __name__ == "__main__":
+    strapper(obj=Dict(dict()))
+#+end_src

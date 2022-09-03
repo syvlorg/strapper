@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "strapper"
+version = "1.0.0.0"
+description = "A python application to help you install NixOS on a ZFS root!"
+authors = ["sylvorg <jeet.ray@syvl.org>"]
+license = "OREO"
+include = [
+	"strapper/**/*.py",
+	"strapper/**/*.hy",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+bakery = { git = "https://github.com/syvlorg/bakery.git", branch = "main" }
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
