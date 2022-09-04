@@ -20,16 +20,12 @@
         callPackage = args@{ stdenv
             , util-linux
             , getconf
-            , nix
-            , nixos-install-tools
-            , nixos-rebuild
             , parted
             , sd
             , rsync
-            , zfs
             , bakery
             , pname
-        }: j.mkPythonPackage self.pkgs.${stdenv.targetPlatform.system}.Pythons.${self.type}.pkgs (rec {
+        }: j.mkPythonPackage self stdenv [ "postCheck" ] (rec {
             owner = "syvlorg";
             inherit pname;
             src = ./.;
