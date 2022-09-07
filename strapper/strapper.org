@@ -10,7 +10,6 @@
 * Imports
 
 #+begin_src hy
-(import click)
 (import json)
 (import oreo)
 (import os)
@@ -62,6 +61,12 @@
 
 #+begin_src hy
 (require hyrule [-> assoc])
+#+end_src
+
+* Application Imports
+
+#+begin_src hy
+(import click)
 #+end_src
 
 * Datasets

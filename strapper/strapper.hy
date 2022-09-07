@@ -1,7 +1,6 @@
 (import rich.traceback)
 (.install rich.traceback :show-locals True)
 
-(import click)
 (import json)
 (import oreo)
 (import os)
@@ -33,6 +32,8 @@
              (import toolz [first])))
 
 (require hyrule [-> assoc])
+
+(import click)
 
 (defn update-datasets [ctx [swap 0] [encrypted False] [deduplicated False] [pool False] [root-device None] [reserved-only False]]
       (setv host         ctx.obj.host

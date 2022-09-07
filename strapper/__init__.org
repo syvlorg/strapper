@@ -14,12 +14,6 @@ RichTraceback.install(show_locals = True)
 import hy
 #+end_src
 
-** From
-
-#+begin_src py
-from addict import Dict
-#+end_src
-
 ** Everything From Strapper
 
 Adapted from [[https://github.com/hylang/hyrule/blob/master/hyrule/__init__.py][here]],
@@ -35,8 +29,15 @@ from strapper.strapper import *
 #+end_src
 
 ** Click Application
+*** Imports
+
+#+begin_src py
+from addict import Dict
+#+end_src
+
+*** Main
 
 #+begin_src py
 if __name__ == "__main__":
-    strapper(obj=Dict(dict()))
+    tailapi(obj=Dict(dict()))
 #+end_src
