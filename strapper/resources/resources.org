@@ -1,0 +1,24 @@
+#+begin_src yaml :tangle user_datasets.yaml
+"<<username>>":
+  datasets:
+    oreo: {}
+    sylveon: {}
+    sylvorg: {}
+    syvlorg: {}
+    user: {}
+    uru: {}
+  options:
+  - mountpoint=legacy
+#+end_src
+
+#+begin_src text :tangle username.txt
+<<username>>
+#+end_src
+
+#+begin_src json :tangle users.json
+<<users>>
+#+end_src
+
+#+begin_src json :tangle homes.json
+<<homes>>
+#+end_src

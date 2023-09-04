@@ -1,7 +1,7 @@
 (import rich.traceback)
 (.install rich.traceback :show-locals True)
 
-(import json)
+(import orjson as json)
 (import oreo)
 (import os)
 
@@ -56,7 +56,7 @@
                                             "sylveon": {  },
                                             "sylvorg": {  },
                                             "syvlorg": {  },
-                                            "aiern": {  },
+                                            "user": {  },
                                             "uru": {  }},
                                         "options": [ "mountpoint=legacy" ]},
                                     "system": {
@@ -106,11 +106,11 @@
            (assoc (get datasets "virt" d "podman" d) user (dict)))
       (if reserved-only
           (.create zfs (+ host "/" reserved) :o "mountpoint=none")
-          (do (with [dnix (open (+ resources "/datasets.nix") "w")]
-                    (.write dnix (+ "host: { \n\t\""
-                                    (or root-device "${host}/system/root")
-                                    "\" = \"/\";"
-                                    "\n"))
+          (with [dnix (.open (+ resources "/datasets.nix") "w")]
+                (.write dnix (+ "host: { \n\t\""
+                                (or root-device "${host}/system/root")
+                                "\" = \"/\";"
+                                "\n"))
               (defn recurse [ddict dname droot [mountpoint ""]]
                     (setv recurse/datasets     (.list zfs :r True :o "name" :m/list True :m/ignore-stderr True)
                           recurse/datasets     (cut recurse/datasets 2 (len recurse/datasets))
@@ -147,7 +147,7 @@
                                               (.join " " (gfor user (.keys users) (+ "\"" (get homes user) "/" dname "\"")))
                                               " ];\n"))
 
-                              ;; TODO: What does this do? Mind that this sits in the middle of an if statement
+                              ;; TODO: What does this do? Mind that this sits in the middle of an if statement.
                               #_(for [user (.keys users)]
                                    (.write dnix (+ "\t\""
                                                    recurse/dataset
@@ -171,7 +171,7 @@
                          (recurse value key recurse/dataset mountpoint)))
               (for [[key value] (.items datasets)]
                    (recurse value key "${host}"))
-              (.write dnix "}"))))
+              (.write dnix "}")))
       (when (or pool reserved-only)
             (let [pool-size-plus-metric (get (.get zpool :H True "size" host :m/list True :m/split True) 2)
                   pool-size             (-> pool-size-plus-metric
@@ -237,7 +237,7 @@
                             (while (not (.exists ctx.obj.resources))
                                    (setv cwd cwd.parent
                                          ctx.obj.resources (/ cwd nd))
-                                   (else (when (and (= resources ed)
+                                   (else (when (and (= ctx.obj.resources ed)
                                                     (.exists (setx mnt-dir (/ "/mnt" nd))))
                                                (setv ctx.obj.resources mnt-dir)))))))
                (setv ctx.obj.host host)
@@ -280,16 +280,10 @@
                            (when (or install all)
                                  (let [ options [
 
-                                            "tarball-ttl 0"
-
                                             "build-fallback true"
 
                                       ] ]
                                       (nixos-install #* ctx.args
-
-                                                 ;; :I (with [f (open (+ ctx.obj.resources "/flake.lock"))]
-                                                 ;;          #[f[nixpkgs=https://github.com/nixos/nixpkgs/archive/{(get (.load json f) "nodes" "nixos-22-05" "original" "ref")}.tar.gz]f])
-                                                 :I #[f[nixpkgs={(.strip (.eval nix :impure True :expr "(import ./etc/nixos).inputs.nixpkgs.outPath" :m/run False) "\"")}]f]
 
                                                  :m/run True
                                                  :show-trace True
@@ -380,8 +374,8 @@ The final partition will be the ZFS partition, and does not need to be specified
                                (when deduplicated (setv dataset-options-dict.dedup "edonr,verify"))
                                (when (.ismount os.path "/mnt") (umount :R True "/mnt"))
                                (.export zpool :f True ctx.obj.host :m/ignore-stderr True)
-                               (.update dataset-options-dict (dfor item pool-options :setv kv (.split item "=") [(get kv 0) (get kv 1)]))
-                               (.update pool-options-dict (dfor item dataset-options :setv kv (.split item "=") [(get kv 0) (get kv 1)]))
+                               (.update dataset-options-dict (dfor item pool-options :setv kv (.split item "=") (get kv 0) (get kv 1)))
+                               (.update pool-options-dict (dfor item dataset-options :setv kv (.split item "=") (get kv 0) (get kv 1)))
                                (command :O { "repeat-with-values" (gfor [k v] (.items dataset-options-dict) f"{k}={v}") }
                                         :o { "repeat-with-values" (gfor [k v] (.items pool-options-dict) f"{k}={v}") }
                                         ctx.obj.host

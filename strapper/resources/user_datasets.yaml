@@ -1,0 +1,10 @@
+"shadowrylander":
+  datasets:
+    oreo: {}
+    sylveon: {}
+    sylvorg: {}
+    syvlorg: {}
+    user: {}
+    uru: {}
+  options:
+  - mountpoint=legacy

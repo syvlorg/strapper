@@ -1,0 +1,36 @@
+base: {}
+hold: {}
+omniverse: {}
+reserved: {}
+system:
+  datasets:
+    home:
+      datasets:
+        root:
+          mountpoint: "/root"
+    nix: {}
+    persist:
+      datasets:
+        root:
+          mountpoint: "/persist/root"
+    root: {}
+    tmp:
+      datasets:
+        nix: {}
+      options:
+      - sync=disabled
+  options:
+  - mountpoint=legacy
+virt:
+  datasets:
+    docker: {}
+    kvm: {}
+    podman:
+      datasets: {}
+    qemu: {}
+    vagrant: {}
+    xen: {}
+  options:
+  - mountpoint=legacy
+  - refreservation=none
+  mountpoint: "/var/lib"

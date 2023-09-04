@@ -39,5 +39,5 @@ from addict import Dict
 
 #+begin_src py
 if __name__ == "__main__":
-    tailapi(obj=Dict(dict()))
+    tailapi(obj=Dict())
 #+end_src
