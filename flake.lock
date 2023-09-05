@@ -200,8 +200,8 @@
         "xero-figlet-fonts": "xero-figlet-fonts"
       },
       "locked": {
-        "lastModified": 1693851010,
-        "narHash": "sha256-lV5j83lnb5ljYudy14P5gf9dbaEFk9RmxThfLwPvfAk=",
+        "lastModified": 1693853764,
+        "narHash": "sha256-F3DMz8eZ5WaWAmVC6yxfKMkDvrEABCXpCLvMcH0cL0k=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/bundle"
@@ -266,8 +266,8 @@
         "xero-figlet-fonts": "xero-figlet-fonts_2"
       },
       "locked": {
-        "lastModified": 1693851010,
-        "narHash": "sha256-lV5j83lnb5ljYudy14P5gf9dbaEFk9RmxThfLwPvfAk=",
+        "lastModified": 1693853764,
+        "narHash": "sha256-yEXeyIEnMqXUFrnCGGHWXKS+gAWQlYtbo6VTgbm7Slo=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/bundle"
@@ -333,8 +333,8 @@
         "xero-figlet-fonts": "xero-figlet-fonts_3"
       },
       "locked": {
-        "lastModified": 1693851010,
-        "narHash": "sha256-lV5j83lnb5ljYudy14P5gf9dbaEFk9RmxThfLwPvfAk=",
+        "lastModified": 1693853764,
+        "narHash": "sha256-yEXeyIEnMqXUFrnCGGHWXKS+gAWQlYtbo6VTgbm7Slo=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/bundle"
@@ -3753,8 +3753,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1693851020,
-        "narHash": "sha256-ml1DH4hvoqfV6lVdmkoVeC0/En5WE7AhtmlqZ3AB3oI=",
+        "lastModified": 1693853771,
+        "narHash": "sha256-ezocDoEyFBA44v76AWOsSipNjmHpZm534XHHS5LPSmo=",
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/sylveon/syvlorg/bakery"
       },
@@ -3782,8 +3782,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1693851020,
-        "narHash": "sha256-Kv28r6XCoFsPUwqNyxL0J+5EmDVm1tODgGKDmfgi99Q=",
+        "lastModified": 1693853771,
+        "narHash": "sha256-VrsvzQmZ8D1Jqavb/A63LXgp/kTWCmjgkr+MIbydaWI=",
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/sylveon/syvlorg/oreo"
       },

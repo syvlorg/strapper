@@ -32,7 +32,7 @@
   description = "A python application to help you install NixOS on a ZFS root!";
   inputs = rec {
     bundle = {
-      url = "git+https://github.com/sylvorg/bundle.git";
+      url = "https://github.com/sylvorg/bundle.git";
       type = "git";
       submodules = true;
     };
